@@ -17,7 +17,6 @@ export default class Cl_vLaboratorios {
             tbody.innerHTML = "";
             equipos.forEach((equipo) => {
                 const tr = document.createElement("tr");
-                // Agregar clase CSS según estado
                 const estadoClass = `estado-${equipo.estado.toLowerCase().replace(/ /g, '-')}`;
                 tr.className = estadoClass;
                 tr.innerHTML = html `

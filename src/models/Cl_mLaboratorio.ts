@@ -6,6 +6,9 @@ export default class Cl_mLaboratorios {
     agregarEquipo(equipo: Cl_mEquipos): void {
         this.equipos.push(equipo);
     }
+    idUnico(id: number): boolean {
+        return !this.equipos.some(equipo => equipo.Id === id);
+    }
     // Método para reportar falla de un equipo por ID
     reportarFallaEquipo(id: number): boolean {
         const equipo = this.equipos.find(e => e.Id === id);
@@ -68,5 +71,4 @@ export default class Cl_mLaboratorios {
         
         return { exito: false, mensaje: "Error al eliminar el equipo" };
     }
-
 }

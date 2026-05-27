@@ -1,8 +1,10 @@
 import Cl_mEquipos from "../models/Cl_mEquipos.js";
 export default class Cl_cEquipos {
+    modelo;
     vista;
     callback;
-    constructor(vista) {
+    constructor(vista, modelo) {
+        this.modelo = modelo;
         this.vista = vista;
         this.vista.onAgregar(() => this.btAgregarOnClick());
         this.vista.onVolver(() => this.btCancelarOnClick());
@@ -16,6 +18,10 @@ export default class Cl_cEquipos {
         this.vista.ocultar();
     }
     btAgregarOnClick() {
+        if (!this.modelo?.idUnico(this.vista.Id)) {
+            alert(`El ID ${this.vista.Id} ya está en uso. Use otro ID.`);
+            return;
+        }
         if (!this.vista.Marca || !this.vista.Procesador || !this.vista.Ubicacion || !this.vista.Estado) {
             alert("Por favor complete todos los campos");
             return;

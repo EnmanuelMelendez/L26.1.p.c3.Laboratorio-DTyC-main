@@ -3,6 +3,9 @@ export default class Cl_mLaboratorios {
     agregarEquipo(equipo) {
         this.equipos.push(equipo);
     }
+    idUnico(id) {
+        return !this.equipos.some(equipo => equipo.Id === id);
+    }
     // Método para reportar falla de un equipo por ID
     reportarFallaEquipo(id) {
         const equipo = this.equipos.find(e => e.Id === id);

@@ -1,11 +1,14 @@
 import { I_vEquipos } from "../interfaces/I_vEquipos.js";
 import Cl_mEquipos from "../models/Cl_mEquipos.js";
+import Cl_mLaboratorios from "../models/Cl_mLaboratorio.js";
 
 export default class Cl_cEquipos {
+    private modelo: Cl_mLaboratorios;
     private vista: I_vEquipos;
     private callback!: (equipos: Cl_mEquipos | null) => void;
     
-    constructor(vista: I_vEquipos) {
+    constructor(vista: I_vEquipos, modelo: Cl_mLaboratorios) {
+        this.modelo = modelo;
         this.vista = vista;
         this.vista.onAgregar(() => this.btAgregarOnClick());
         this.vista.onVolver(() => this.btCancelarOnClick());
@@ -22,6 +25,10 @@ export default class Cl_cEquipos {
     }
     
     private btAgregarOnClick() {
+        if (!this.modelo?.idUnico(this.vista.Id)) {
+        alert(`El ID ${this.vista.Id} ya está en uso. Use otro ID.`);
+        return;
+    }
         if (!this.vista.Marca || !this.vista.Procesador || !this.vista.Ubicacion || !this.vista.Estado) {
             alert("Por favor complete todos los campos");
             return;
