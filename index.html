@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorios DCyT</title>
+    <link rel="stylesheet" href="Color.css">
+</head>
+<body>
+    <section id="laboratorios">
+        <h2>Lista de Equipos</h2>
+        <button id="Laboratorio_btnNuevoEquipo">Agregar Equipo</button>
+        <hr>
+        <table id="Laboratorio_tbEquipos">
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Procesador</th>
+                    <th>Memoria (GB)</th>
+                    <th>Ubicacion</th>
+                    <th>Estado</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </section>
+
+    <section id="equipos" hidden style="margin-top: 20px; border: 1px solid #ccc; padding: 15px; width: 300px;">
+        <h5>Registro de Equipos</h5>
+        <div>
+            <label>Marca:
+                <input type="text" id="equipos_marca" placeholder="nombre del equipo">
+            </label>
+        </div>
+        <div>
+            <label>Procesador:
+                <input type="text" id="equipos_procesador" placeholder="Nombre del procesador">
+            </label>
+        </div>
+        <div>
+            <label>Memoria (GB):
+                <input type="number" id="equipos_memoria" placeholder="Memoria del equipo">
+            </label>
+        </div>
+        <div>
+            <label>Ubicación:
+                <select id="equipos_ubicacion">
+                    <option value="laboratorio 1">Laboratorio 1</option>
+                    <option value="laboratorio 2">Laboratorio 2</option>
+                    <option value="laboratorio 3">Laboratorio 3</option>
+                    <option value="laboratorio 4">Laboratorio 4</option>
+                    <option value="laboratorio 5">Laboratorio 5</option>
+                    <option value="laboratorio 6">Laboratorio 6</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>Estado:
+                <select id="equipos_estado">
+                    <option value="activo">Activo</option>
+                    <option value="reportado">Reportado</option>
+                    <option value="en mantenimiento">En Mantenimiento</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label>Id:
+                <input type="number" id="equipos_id" placeholder="Id del equipo">
+            </label>
+        </div>
+        <br>
+        <button id="equipos_btCancelar">Cancelar</button>
+        <button id="equipos_btAceptar">Aceptar</button>
+    </section>
+
+    <script type="module">
+    import Cl_cLaboratorios from "./dist/controllers/Cl_cLaboratorio.js";
+    import Cl_cEquipos from "./dist/controllers/Cl_cEquipos.js";
+
+    // Importamos SOLO las vistas
+    import Cl_vLaboratorios from "./dist/views/Cl_vLaboratorio.js";
+    import Cl_vEquipos from "./dist/views/Cl_vEquipos.js";
+
+    // 1. Instanciamos las vistas
+    const vistaLaboratorios = new Cl_vLaboratorios();
+    const vistaEquipos = new Cl_vEquipos();
+
+    // 2. Inyectamos las vistas en los controladores
+    const controladorEquipos = new Cl_cEquipos(vistaEquipos);
+    const controladorLaboratorios = new Cl_cLaboratorios(vistaLaboratorios, controladorEquipos);
+    </script>
+</body>
+</html>

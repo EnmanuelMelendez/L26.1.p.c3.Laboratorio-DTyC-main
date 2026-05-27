@@ -1,0 +1,26 @@
+.estado-activo {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.estado-reportado {
+    background-color: #fff3cd;
+    color: #856404;
+}
+
+.estado-en-mantenimiento {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+tr.estado-activo {
+    border-left: 4px solid #28a745;
+}
+
+tr.estado-reportado {
+    border-left: 4px solid #ffc107;
+}
+
+tr.estado-en-mantenimiento {
+    border-left: 4px solid #dc3545;
+}
